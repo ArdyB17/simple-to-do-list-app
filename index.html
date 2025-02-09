@@ -1,0 +1,125 @@
+<!--
+===========================================
+|     Simple To-Do List Application      |
+===========================================
+
+Document Structure Overview:
+1. Meta Section (<head>)
+   - Character encoding (UTF-8)
+   - Viewport settings for responsive design
+   - External resources (CSS, Font Awesome)
+
+2. Body Structure
+   - Container for app content
+   - Header with theme toggle
+   - Task input section
+   - Task categorization (tags)
+   - Search functionality
+   - Kanban-style board layout
+
+Features Implemented:
+- Responsive design
+- Dark/Light theme toggle
+- Task categorization with tags
+- Search functionality
+- Drag and drop between boards
+===========================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskify - Modern Task manager</title>
+
+    <!-- External Resources:
+         - style.css: Custom styles for the application
+         - Font Awesome: Icon library for UI elements -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<!-- Body starts with no theme class - will be set by JavaScript -->
+
+<body class="light-mode">
+    <!-- Main container wraps entire application content -->
+    <div class="container">
+        <!-- Header Section: App title and theme toggle -->
+        <header>
+            <h1 class="app-title">Taskify - Modern Task manager</h1>
+            <!-- Theme toggle button with moon/sun icons -->
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon" id="moon-icon"></i>
+                <i class="fas fa-sun hidden" id="sun-icon"></i>
+            </button>
+        </header>
+
+        <!-- Input Section: Task creation and management -->
+        <section class="input-section">
+            <!-- Task Input Container: Text field and add button -->
+            <div class="task-input-container">
+                <!-- Text input for new tasks -->
+                <input type="text" id="task-input" placeholder="Enter a task" aria-label="Task input field">
+                <!-- Add task button with icon -->
+                <button id="add-task" class="add-button" aria-label="Add new task">
+                    <i class="fa-solid fa-folder-plus"></i>
+                    Add task
+                </button>
+            </div>
+
+            <!-- Task Categories Section -->
+            <h2 class="category-title">Choose your tasks kategory</h2>
+            <!-- Tag buttons for task categorization -->
+            <div class="tags-container" id="tags-container">
+                <!-- Each button is a clickable tag with data attribute -->
+                <button class="tag" data-tag="Priority">Priority</button>
+                <button class="tag" data-tag="Personal">Personal</button>
+                <button class="tag" data-tag="Work">Work</button>
+                <button class="tag" data-tag="Homework">Homework</button>
+                <button class="tag" data-tag="Study">Study</button>
+                <button class="tag" data-tag="Fun">Fun</button>
+            </div>
+
+            <!-- Search Section: Filter tasks -->
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <!-- Search icon for visual indication -->
+                    <i class="fas fa-search search-icon"></i>
+                    <!-- Search input field -->
+                    <input type="text" id="search-input" placeholder="Search tasks..." aria-label="Search tasks">
+                </div>
+            </div>
+        </section>
+
+        <!-- Kanban Board Section: Task organization -->
+        <section class="boards-container">
+            <!-- Todo Board: New tasks start here -->
+            <div class="board" id="todo" data-board="todo">
+                <h2>📝 To do</h2>
+                <!-- Container for todo tasks -->
+                <div class="tasks-container"></div>
+            </div>
+
+            <!-- Doing Board: Tasks in progress -->
+            <div class="board" id="doing" data-board="doing">
+                <h2>⚡ Doing</h2>
+                <!-- Container for in-progress tasks -->
+                <div class="tasks-container"></div>
+            </div>
+
+            <!-- Done Board: Completed tasks -->
+            <div class="board" id="done" data-board="done">
+                <h2>✨ Done</h2>
+                <!-- Container for completed tasks -->
+                <div class="tasks-container"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Main application script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
